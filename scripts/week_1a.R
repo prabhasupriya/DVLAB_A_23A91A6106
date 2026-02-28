@@ -75,3 +75,4 @@ ggplot(va_long, aes(x = DeathRate)) +
        x = "Deathrate Bins",
        y = "Frequency") +
   theme_minimal()
+
