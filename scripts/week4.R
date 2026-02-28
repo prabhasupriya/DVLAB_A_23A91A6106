@@ -7,54 +7,54 @@ View(iris)
 class(iris)
 ?iris
 
-#basic box plot
-
+# basic box plot
 boxplot(iris$Sepal.Length)
 
 boxplot(iris$Sepal.Length,
-        main = "Box plot for sepal length",
-ylab="Sepal_length",
-col= 'skyblue')
+        main = "Box plot for Sepal Length",
+        ylab = "Sepal Length",
+        col = "skyblue")
 
-
-boxplot(iris$Sepal.Length ~Species,
+# grouped box plot
+boxplot(iris$Sepal.Length ~ Species,
         data = iris,
-        main = "sepal length for Sepecies ",
-        ylab="Sepal_length",
-        xlab ="Species",
-        col= c('skyblue' ,'pink','green'))
+        main = "Sepal Length for Species",
+        ylab = "Sepal Length",
+        xlab = "Species",
+        col = c("skyblue", "pink", "green"))
 
-
+# multiple variables
 boxplot(iris,
-        main = "multi  variables for Box plot",col= 'green'
-)
+        main = "Multiple Variables Box Plot",
+        col = "green")
 
+boxplot(iris[, 1:4],
+        main = "Multiple Variables Box Plot",
+        col = c("green", "pink", "orange", "skyblue"))
 
-boxplot(iris[,1:4],
-        main = "multi  variables for Box plot",
-        col= c('green','pink','orange','skyblue'))
-
+# ggplot2
 library(ggplot2)
+
 ggplot(iris,
-       aes(x=Species, y = Sepal.Length))+
+       aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 
-ggplot(iris , aes(x= Species , y = Sepal.Length , fill = Species))+
-  geom_boxplot()+
+ggplot(iris,
+       aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
   theme_minimal()
 
-#using manual color patteren 
+# ✅ manual color pattern (FIXED)
 
-ggplot(iris , aes(x = Species , y= Sepal.Length , fill = Species
-                  ))+
-  geom_boxplot()+
-  scale_fill_manual((
-    values= c(
-      "setosa"="red",
+ggplot(iris,
+       aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  scale_fill_manual(
+    values = c(
+      "setosa" = "red",
       "versicolor" = "steelblue",
-      "virginica"="green"
+      "virginica" = "green"
     )
-  )+
-    theme_minimal()
+  ) +
+  theme_minimal()
 
-  
